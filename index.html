@@ -1,15 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { WebView } from 'react-native-webview';
-
-export default function App() {
-  return (
-    <View style={{flex:1}}>
-    <StatusBar hidden/>  
-    <WebView 
-      style={styles.container}
-      source={{ html:  `
-      <html>
+<html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,12 +62,12 @@ export default function App() {
         <script>
 
             var gallery = document.getElementById('gallery');
-            var initialImages = 3;
+            var initialImages = 1;
             var loadMore = document.getElementById('load-more');
             var controlImage =0;
             
             for(var i=controlImage; i<initialImages; i++){
-                gallery.innerHTML+='<img src="https://picsum.photos/800/400?random='+i+'" />';
+                gallery.innerHTML+='<img src="https://picsum.photos/1250/690?random='+i+'" />';
                 controlImage++;
             }
 
@@ -87,9 +76,9 @@ export default function App() {
                 for(var i=0; i<initialImages; i++){
                 
                     let image = document.createElement('img');
-                    image.src="https://picsum.photos/800/400?random="+controlImage;
+                    image.src="https://picsum.photos/1250/690?random="+controlImage;
                     
-                    loadMore.innerHTML = "Loading...";
+                    loadMore.innerHTML = "loading...";
 
                     image.addEventListener('load', function(){
                         loadMore.innerHTML = "Load more !";
@@ -111,18 +100,4 @@ export default function App() {
 
 
 </html>
-      `
-      }}
-    />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
